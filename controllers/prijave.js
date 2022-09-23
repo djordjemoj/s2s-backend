@@ -256,8 +256,8 @@ const postPrijava = async (req, res, next) => {
   const session = await Prijava.startSession();
   session.startTransaction();
 
-  const prijava = req.body.prijava;
-  console.log(req.body.prijava);
+  const prijava = req.body;
+  console.log(req.body);
 
   try {
     // if (!prijava) throw new CustomError("Niste naveli prijavu", 400);
