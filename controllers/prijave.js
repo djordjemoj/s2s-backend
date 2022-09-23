@@ -3,13 +3,13 @@ const mongoose = require("mongoose");
 
 const CustomError = require("../errors/customerror");
 
-const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// const sgMail = require("@sendgrid/mail");
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // ovo treba da se doda na sve funkcije gde hocemo da logujemo
 const { logHR } = require("./log");
 
-const obrisiPrijave = async (req, res) => {
+const obrisiPrijave = async (req, res) => {//nemoj se prevaris i ovo da obrises
   await Prijava.deleteMany({});
   res.json({ success: true });
 };
@@ -52,6 +52,7 @@ const infoZaLogistiku = async (req, res, next) => {
   }
   res.json({ success: true });
 };
+//treba da se izmeni kad smislim kako cu info za log
 
 const dodajNapomenu = async (req, res, next) => {
   const napomenica = req.body.napomena;
@@ -113,6 +114,7 @@ const staviUSmestene = async (req, res, next) => {
 
   if (result.statusHR !== "finalno")
     throw new CustomError("Prijava nije finalna", 400);
+    //ovde negde ima greska u logici sto nije radilo kako treba, al prvo da namestim bazu da moze
 
   await Prijava.updateOne({ _id: prijava_id }, { statusLogistika: "smesten" });
   res.json({ success: true });
@@ -219,6 +221,7 @@ const oceniPrijavu = async (req, res) => {
     }
 
     if (req.body.ocenaPanel > 25 || req.body.ocenaPanel < 0) {
+      // obrt paznju da se zove ocena panel TEST
       return res.json({
         success: false,
         message: "Ocena mora biti u opsegu od 0 do 25",
@@ -229,7 +232,7 @@ const oceniPrijavu = async (req, res) => {
       { _id: req.body.prijavaId },
       {
         $set: {
-          "zelja.panel.ocena": req.body.ocenaPanel,
+          "ocena": req.body.ocenaPanel,
         },
       }
     );
@@ -256,41 +259,47 @@ const postPrijava = async (req, res, next) => {
   const prijava = req.body.prijava;
 
   try {
-    if (!prijava) throw new CustomError("Niste naveli prijavu", 400);
+    // if (!prijava) throw new CustomError("Niste naveli prijavu", 400);
 
-    if (
-      prijava.zelja.techChallenge &&
-      prijava.zelja.techChallenge.kompanije.length > 3
-    )
-      throw new CustomError(
-        "Ne mozete se prijaviti na vise od 3 tech challenga",
-        400
-      );
-    if (prijava.zelja.radionice && prijava.zelja.radionice.length > 3)
-      throw new CustomError(
-        "Ne mozete se prijaviti na vise od 3 radionice",
-        400
-      );
+    // if (
+    //   prijava.zelja.techChallenge &&
+    //   prijava.zelja.techChallenge.kompanije.length > 3
+    // )
+    //   throw new CustomError(
+    //     "Ne mozete se prijaviti na vise od 3 tech challenga",
+    //     400
+    //   );
+    // if (prijava.zelja.radionice && prijava.zelja.radionice.length > 3)
+    //   throw new CustomError(
+    //     "Ne mozete se prijaviti na vise od 3 radionice",
+    //     400
+    //   );
 
     const svePrijave = await Prijava.find();
+    //zar ne moze ovde get prijave
 
     prijava.prijavaId = svePrijave.length + 1;
+    //ne kapiram zasto se menja id na sledeci, kad smo vec imali prijavu, ovo je za menjanje
 
-    if (!prijava.zelja.panel) {
-      prijava.statusHR = "ocenjen";
-    }
-
+    // if (!prijava.zelja.panel) {
+    //   prijava.statusHR = "ocenjen";
+    // }
+    //ne kapiram ovo gore
+    // if (prijava.ocena >=0 && prijava.ocena <=25) {
+    //      prijava.statusHR = "ocenjen";
+    // }
+//  ovo gore sam ja pisao ali ne znam cemu sluzi za sad
     await Prijava.create(prijava);
 
     const porukica = {
       to: prijava.emailPriv,
-      from: "djordjemojsic2001@gmail.com", //znam da ne radi nista ali za svk sluc
+      from: "djordje.mojsic@fonis.com", //znam da ne radi nista ali za svk sluc
       subject: "[Kompanije studentima][FONIS] Prihvaćena prijava",
       text: "Sa zadovoljstvom Vam javljamo da je vaša prijava uspešno evidentirana!",
       html: "<div><h3>Sa zadovoljstvom Vam javljamo da je vaša prijava uspešno evidentirana!</h3><p>Možeš očekivati povratnu informaciju nakon zatvaranja prijava.</p></div>",
     };
 
-    await sgMail.send(porukica);
+    // await sgMail.send(porukica);
     console.log("mejl je poslat");
 
     await session.commitTransaction();
