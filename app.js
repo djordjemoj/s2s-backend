@@ -1,5 +1,6 @@
 //Import packages
-require("dotenv").config();
+// require("dotenv").config();
+require("dotenv").config({ path: "DATABASE_URI" });
 require("dotenv/config");
 const express = require("express");
 const mongoose = require("mongoose");
