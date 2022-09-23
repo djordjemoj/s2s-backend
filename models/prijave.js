@@ -177,26 +177,26 @@ const prijavaShema = new mongoose.Schema(
       min: 0,
       max: 25,
     },
-    infoZaLogistiku: {
-      type: infoZaLogistiku,
-      default: {},
-    },
-    izmeniliLog: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: 'admins',
-      },
-    ],
-    izmeniliHr: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: 'admins',
-      },
-    ],
-    napomena: {
-      type: String,
-      default: '',
-    },
+    // infoZaLogistiku: {
+    //   type: infoZaLogistiku,
+    //   default: {},
+    // },
+    // izmeniliLog: [
+    //   {
+    //     type: mongoose.Types.ObjectId,
+    //     ref: 'admins',
+    //   },
+    // ],
+    // izmeniliHr: [
+    //   {
+    //     type: mongoose.Types.ObjectId,
+    //     ref: 'admins',
+    //   },
+    // ],
+    // napomena: {
+    //   type: String,
+    //   default: '',
+    // },
   },
   {
     minimize: false,
