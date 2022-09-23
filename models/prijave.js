@@ -97,11 +97,6 @@ const infoZaLogistiku = {
 
 const prijavaShema = new mongoose.Schema(
   {
-    prijavaId:{
-      type: String,
-      required: false,
-    },
-
     imePrezime: {
       type: String,
       required: [true, 'Morate uneti ime i prezime'],
