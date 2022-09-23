@@ -228,16 +228,16 @@ const oceniPrijavu = async (req, res) => {
       });
     }
 
-    await Prijava.updateOne(
-      { _id: req.body.prijavaId },
-      {
-        $set: {
-          "ocena": req.body.ocenaPanel,
-        },
-      }
-    );
+    // await Prijava.updateOne(
+    //   { _id: req.body.prijavaId },
+    //   {
+    //     $set: {
+    //       "ocena": req.body.ocenaPanel,
+    //     },
+    //   }
+    // );
 
-    await logHR(req.body.prijavaId, req.user._id);
+    // await logHR(req.body.prijavaId, req.user._id);
 
     res.json({ success: true, message: "Uspesno ste ocenili panel" });
   } catch (err) {
@@ -278,7 +278,7 @@ const postPrijava = async (req, res, next) => {
     const svePrijave = await Prijava.find();
     //zar ne moze ovde get prijave
 
-    prijava.prijavaId = svePrijave.length + 1;
+    // prijava.prijavaId = svePrijave.length + 1;
     //ne kapiram zasto se menja id na sledeci, kad smo vec imali prijavu, ovo je za menjanje
 
     // if (!prijava.zelja.panel) {
