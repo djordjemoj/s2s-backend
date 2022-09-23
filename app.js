@@ -31,6 +31,8 @@ app.use("/api/postavipitanje", pitanjeRouter);
 // mislim da cu ovo da obrisem
 app.get("/", (req, res) => {
   res.send("BACK ZA S2S");
+  app.get("/api/prijave", (req, res) => {
+    res.send("BACK ZA S2S prijave");
   //nzm ni sta ovo radi
 });
 
