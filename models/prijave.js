@@ -75,6 +75,8 @@ const infoZaLogistiku = {
   //   default: '',
   // },
 //OVO JE INFO ZA LOG< NE ZNAM STA MI SVE TREBA ZA SAD TEST
+
+
   panelDaLi: {
     type: Boolean,
     default: false,
@@ -95,6 +97,11 @@ const infoZaLogistiku = {
 
 const prijavaShema = new mongoose.Schema(
   {
+    prijavaId:{
+      type: String,
+      required: false,
+    },
+
     imePrezime: {
       type: String,
       required: [true, 'Morate uneti ime i prezime'],
