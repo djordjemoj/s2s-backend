@@ -57,43 +57,43 @@ const mongoose = require('mongoose')
 //   ],
 // }
 
-const infoZaLogistiku = {
-  // radionica: {
-  //   type: String,
-  //   default: '',
-  // },
-  // panel: {
-  //   type: Boolean,
-  //   default: false,
-  // },
-  // techChallenge: {
-  //   type: String,
-  //   default: '',
-  // },
-  // speedDating: {
-  //   type: String,
-  //   default: '',
-  // },
-//OVO JE INFO ZA LOG< NE ZNAM STA MI SVE TREBA ZA SAD TEST
+// const infoZaLogistiku = {
+//   // radionica: {
+//   //   type: String,
+//   //   default: '',
+//   // },
+//   // panel: {
+//   //   type: Boolean,
+//   //   default: false,
+//   // },
+//   // techChallenge: {
+//   //   type: String,
+//   //   default: '',
+//   // },
+//   // speedDating: {
+//   //   type: String,
+//   //   default: '',
+//   // },
+// //OVO JE INFO ZA LOG< NE ZNAM STA MI SVE TREBA ZA SAD TEST
 
 
-  panelDaLi: {
-    type: Boolean,
-    default: false,
-  },
-  radionicaDaLi: {
-    type: Boolean,
-    default: false,
-  },
-  emailPriv: {
-    type: String,
-    required: [true, 'Morate uneti pravi email logistika'],
-  },
-  brojTelefona: {
-    type: String,
-    required: true,
-  },
-}
+//   panelDaLi: {
+//     type: Boolean,
+//     default: false,
+//   },
+//   radionicaDaLi: {
+//     type: Boolean,
+//     default: false,
+//   },
+//   emailPriv: {
+//     type: String,
+//     required: [true, 'Morate uneti pravi email logistika'],
+//   },
+//   brojTelefona: {
+//     type: String,
+//     required: true,
+//   },
+// }
 
 const prijavaShema = new mongoose.Schema(
   {
