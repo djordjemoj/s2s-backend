@@ -1,6 +1,5 @@
 //Import packages
-// require("dotenv").config();
-require("dotenv").config({ path: "DATABASE_URI" });
+require("dotenv").config();
 require("dotenv/config");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -44,3 +43,4 @@ mongoose.connection.once("open", () => {
 });
 // app.listen(PORT, () => console.log("Server started"));
 // mongoose.connect(process.env.DB_CONNECTION, () => console.log("connected"));
+
