@@ -9,7 +9,8 @@ const CustomError = require("../errors/customerror");
 // ovo treba da se doda na sve funkcije gde hocemo da logujemo
 const { logHR } = require("./log");
 
-const obrisiPrijave = async (req, res) => {//nemoj se prevaris i ovo da obrises
+const obrisiPrijave = async (req, res) => {
+  //nemoj se prevaris i ovo da obrises
   await Prijava.deleteMany({});
   res.json({ success: true });
 };
@@ -114,7 +115,7 @@ const staviUSmestene = async (req, res, next) => {
 
   if (result.statusHR !== "finalno")
     throw new CustomError("Prijava nije finalna", 400);
-    //ovde negde ima greska u logici sto nije radilo kako treba, al prvo da namestim bazu da moze
+  //ovde negde ima greska u logici sto nije radilo kako treba, al prvo da namestim bazu da moze
 
   await Prijava.updateOne({ _id: prijava_id }, { statusLogistika: "smesten" });
   res.json({ success: true });
@@ -252,7 +253,7 @@ const getPrijave = async (req, res, next) => {
 };
 
 const postPrijava = async (req, res, next) => {
-  console.log("izmena");
+  console.log("izmena2");
   const session = await Prijava.startSession();
   session.startTransaction();
 
@@ -289,7 +290,7 @@ const postPrijava = async (req, res, next) => {
     // if (prijava.ocena >=0 && prijava.ocena <=25) {
     //      prijava.statusHR = "ocenjen";
     // }
-//  ovo gore sam ja pisao ali ne znam cemu sluzi za sad
+    //  ovo gore sam ja pisao ali ne znam cemu sluzi za sad
     await Prijava.create(prijava);
 
     const porukica = {
