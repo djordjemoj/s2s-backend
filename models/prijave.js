@@ -142,7 +142,7 @@ const prijavaShema = new mongoose.Schema(
     },
     pitanjaPanelistima: {
       type: String,
-      required: true,
+      required: false,
     },
     prvaRadionica: {
       type: String,

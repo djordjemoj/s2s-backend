@@ -308,7 +308,7 @@ const postPrijava = async (req, res, next) => {
     res.json({ success: true, result: prijava });
     session.endSession();
   } catch (e) {
-    await session.abortTransaction();
+    await session.abortTransaction(); 
     res.json({ success: false, msg: e.message });
     session.endSession();
   }
