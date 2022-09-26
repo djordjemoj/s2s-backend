@@ -9,11 +9,11 @@ const CustomError = require("../errors/customerror");
 // ovo treba da se doda na sve funkcije gde hocemo da logujemo
 const { logHR } = require("./log");
 
-// const obrisiPrijave = async (req, res) => {
-//   //nemoj se prevaris i ovo da obrises
-//   await Prijava.deleteMany({});
-//   res.json({ success: true });
-// };
+const obrisiPrijave = async (req, res) => {
+  //nemoj se prevaris i ovo da obrises
+  await Prijava.deleteMany({});
+  res.json({ success: true });
+};
 
 const infoZaLogistiku = async (req, res, next) => {
   let infoZaLogistiku = {};
