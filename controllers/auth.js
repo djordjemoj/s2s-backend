@@ -38,6 +38,7 @@ const login = async (req, res, next) => {
   });
 
   res.json({ success: true, user, token, poruka: "sta ima test" });
+  console.log(req.body);
 };
 
 module.exports = {

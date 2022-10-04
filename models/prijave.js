@@ -146,11 +146,11 @@ const prijavaShema = new mongoose.Schema(
     },
     prvaRadionica: {
       type: String,
-      required: [true, "Odaberite Radionicu"],
+      required: false,
     },
     prvaMotivacija: {
       type: String,
-      required: [true, "Niste napisali motivaciju za primarnu radionicu"],
+      required: false,
     },
     drugaRadionica: {
       type: String,
